@@ -1,6 +1,7 @@
-let operandL;
+let operandOne;
 let operator;
-let operandR;
+let operandTwo;
+let display;
 
 function add(a, b) {
  return a + b;
@@ -18,21 +19,30 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(numOne, numTwo, operator) {
+function operate(operator) {
     switch(operator) {
         case '+':
-            add(numOne, numTwo);
+            
             break;
        case '-':
-            subtract(numOne, numTwo);
+            
             break;
         case '*':
-            multiply(numOne, numTwo);
+            
             break;
         case '/':
-            divide(numOne, numTwo);
+            
+            break;
+        case '=':
+
+            break;
+        case 'AC':
+
             break;
         default:
             
     }
 }
+
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator')
