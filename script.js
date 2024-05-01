@@ -1,4 +1,4 @@
-let operandOne = '';
+let operandOne = '0';
 let operator = '';
 let operandTwo = '';
 let display = '0';
@@ -54,31 +54,32 @@ console.log(operators);
 
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
-        if (operandOne === '') {
+        if (operandOne === '0') {
             display = button.id;
             operandOne = button.id;
-        } else {
-            display = display.concat(button.id);
-        }
-
+        } 
         if (operator == '' && firstNum === false) {
-           operandOne = operandOne.concat(button.id);
+            operandOne = operandOne.concat(button.id); 
+           display = operandOne;
         } else if (operator != '') {
             operandTwo = operandTwo.concat(button.id);
+            display = operandTwo;
         }
-    screen.textContent = display;
-    firstNum = false;
-    console.log(operandOne);
-    console.log(operandTwo);
-    }
-    );
+
+        if (operandOne == '0' && button.id == '0') {
+            firstNum = true;
+        } else {
+            firstNum = false;  
+        }
+        screen.textContent = display;
+        console.log(operandOne);
+        console.log(operandTwo);
+    });
 });
 
 operators.forEach((button) => {
     button.addEventListener('click', () => {
         operator = button.id;
-        display = display.concat(` ${operator} `);
-        screen.textContent = display;
     });
 });
 
