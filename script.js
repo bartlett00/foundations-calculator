@@ -36,7 +36,7 @@ function operate(operator, numOne, numTwo) {
             break;
         case '/':
             if (numTwoInt == 0) {
-                return 'ERROR DIVIDE BY ZERO'
+                return 'ERROR'
             } else {    
                 return Math.round(divide(numOneInt, numTwoInt) * 100) / 100;
             }

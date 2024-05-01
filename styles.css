@@ -6,6 +6,10 @@ body {
 
 #calc-body {
    display: flex;
+   border: 2px solid #383838;
+   border-radius: 5px;
+   background-color: white;
+   align-items: stretch;
 }
 
 #calc-inner {
@@ -22,6 +26,9 @@ body {
 button {
     width: 100px;
     height: 100px;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: #d6deff;
 }
 
 #display {
@@ -31,6 +38,27 @@ button {
     font-size: 75px;
 }
 
+.btn-row {
+    display: flex;
+}
+
 #equals {
     flex-grow: 1;
+}
+
+#AC {
+    width: 100%;
+}
+
+#smile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #383838;
+    box-sizing: border-box;
+    background-color: #d6deff;
+
 }
