@@ -22,18 +22,20 @@ function divide(a, b) {
 }
 
 function operate(operator, numOne, numTwo) {
+    let numOneInt = Number(numOne);
+    let numTwoInt = Number(numTwo);
     switch(operator) {
         case '+':
-            add(numOne, numTwo);
+            return add(numOneInt, numTwoInt);
             break;
        case '-':
-            subtract(numOne, numTwo);
+            return subtract(numOneInt, numTwoInt);
             break;
         case '*':
-            multiply(numOne, numTwo);
+            return multiply(numOneInt, numTwoInt);
             break;
         case '/':
-            divide(numOne, numTwo);
+            return Math.round(divide(numOneInt, numTwoInt) * 100) / 100;
             break;
         default:
             
@@ -81,12 +83,13 @@ operators.forEach((button) => {
 });
 
 equals.addEventListener('click', () => {
-    result = operate(operator, Number(operandOne), Number(operandTwo));
-    display = result;
-    operandOne = result;
+    result = operate(operator, operandOne, operandTwo);
+    console.log(result);
+    display = result.toString();
+    operandOne = result.toString();
+    operator = '';
     operandTwo = '';
     screen.textContent = display;
-    console.log(result);
 });
 
 clear.addEventListener('click', () => {
@@ -95,6 +98,7 @@ clear.addEventListener('click', () => {
     operandTwo = '';
     result = '';
     operator = '';
+    firstNum = true;
     screen.textContent = display;
 });
 
