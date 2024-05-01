@@ -35,7 +35,11 @@ function operate(operator, numOne, numTwo) {
             return multiply(numOneInt, numTwoInt);
             break;
         case '/':
-            return Math.round(divide(numOneInt, numTwoInt) * 100) / 100;
+            if (numTwoInt == 0) {
+                return 'ERROR DIVIDE BY ZERO'
+            } else {    
+                return Math.round(divide(numOneInt, numTwoInt) * 100) / 100;
+            }
             break;
         default:
             
@@ -54,13 +58,21 @@ console.log(operators);
 
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
-        if (operandOne === '0') {
+        if (firstNum == true) {
             display = button.id;
             operandOne = button.id;
-        } 
+        }
+        if (operandOne === '0' && operator == '') {
+            display = button.id;
+            operandOne = button.id;
+        } else if (display === 'ERROR DIVIDE BY ZERO') {
+            display = button.id;
+            operandOne = button.id;
+            firstNum = true;
+        }
         if (operator == '' && firstNum === false) {
             operandOne = operandOne.concat(button.id); 
-           display = operandOne;
+            display = operandOne;
         } else if (operator != '') {
             operandTwo = operandTwo.concat(button.id);
             display = operandTwo;
@@ -79,6 +91,14 @@ numbers.forEach((button) => {
 
 operators.forEach((button) => {
     button.addEventListener('click', () => {
+        if (operator != '' && operandTwo != '') {
+            operator = button.id;
+            result = operate(operator, operandOne, operandTwo);
+            operandOne = result.toString();
+            operandTwo = '';
+            display = operandOne;
+            screen.textContent = display;
+        }
         operator = button.id;
     });
 });
@@ -90,11 +110,12 @@ equals.addEventListener('click', () => {
     operandOne = result.toString();
     operator = '';
     operandTwo = '';
+    firstNum = true;
     screen.textContent = display;
 });
 
 clear.addEventListener('click', () => {
-    operandOne = '';
+    operandOne = '0';
     display = '0';
     operandTwo = '';
     result = '';
