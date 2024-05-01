@@ -58,7 +58,7 @@ console.log(operators);
 
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
-        if (firstNum == true) {
+        if (firstNum == true && operator == '') {
             display = button.id;
             operandOne = button.id;
         }
